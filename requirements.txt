@@ -1,0 +1,24 @@
+# Flask web framework
+flask==3.0.3
+
+# LangChain core and modules
+langchain==0.2.3
+langchain-core==0.2.3
+langchain-community==0.2.3
+langchain-openai==0.1.7
+
+# Vector store & embeddings
+faiss-cpu==1.11.0
+sentence-transformers==2.7.0
+
+# Document loading (PDF + text)
+pypdf==4.2.0
+
+# Embedding model dependencies
+torch==2.7.0
+transformers==4.41.1
+scipy==1.13.1
+scikit-learn==1.5.0
+
+# For dotenv support (API key loading)
+python-dotenv==1.0.1

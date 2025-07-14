@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"> 
+    <title>DeepSeek R1 Neural Interface</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>🤖 DeepSeek R1 Neural Interface</h1>
+    <form id="chat-form">
+        <input type="text" name="prompt" id="prompt" placeholder="Initialize neural query..." required>
+        <button type="submit" id="send-btn">
+            <span id="btn-text">EXECUTE</span>
+            <span id="btn-loading" class="loading btn-loading-hidden"></span>
+        </button>
+    </form>
+    <div id="response-box">
+        <p><strong>System:</strong> Neural interface initialized. Ready for queries...</p>
+    </div>
+
+    <script>
+        const form = document.getElementById("chat-form");
+        const promptInput = document.getElementById("prompt");
+        const responseBox = document.getElementById("response-box");
+        const sendBtn = document.getElementById("send-btn");
+        const btnText = document.getElementById("btn-text");
+        const btnLoading = document.getElementById("btn-loading");
+
+        // Add typing effect to responses
+        function typeText(element, text, speed = 30) {
+            element.innerHTML = '';
+            element.classList.add('typing');
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    element.classList.remove('typing');
+                }
+            }, speed);
+        }
+
+        // Add cyberpunk glitch effect
+        function glitchText(element) {
+            const originalText = element.innerHTML;
+            const glitchChars = '!@#$%^&*()_+{}|:<>?[];,./~`';
+            let glitchCount = 0;
+            
+            const glitchInterval = setInterval(() => {
+                if (glitchCount < 5) {
+                    let glitchedText = '';
+                    for (let i = 0; i < originalText.length; i++) {
+                        if (Math.random() < 0.1) {
+                            glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                        } else {
+                            glitchedText += originalText[i];
+                        }
+                    }
+                    element.innerHTML = glitchedText;
+                    glitchCount++;
+                } else {
+                    element.innerHTML = originalText;
+                    clearInterval(glitchInterval);
+                }
+            }, 100);
+        }
+
+        // Enhanced form submission
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const prompt = promptInput.value.trim();
+            if (!prompt) return;
+
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.classList.remove('btn-loading-hidden');
+            sendBtn.disabled = true;
+            promptInput.disabled = true;
+
+            // Add user message with typing effect
+            const userMsg = document.createElement('p');
+            responseBox.appendChild(userMsg);
+            typeText(userMsg, `<strong>User:</strong> ${prompt}`);
+            
+            promptInput.value = "";
+
+            try {
+                const res = await fetch("/ask", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({ prompt })
+                });
+                
+                const data = await res.json();
+                
+                // Reset button state
+                btnText.style.display = 'inline';
+                btnLoading.classList.add('btn-loading-hidden');
+                sendBtn.disabled = false;
+                promptInput.disabled = false;
+                promptInput.focus();
+                
+                if (data.answer) {
+                    // Add AI response with typing effect
+                    const aiMsg = document.createElement('p');
+                    responseBox.appendChild(aiMsg);
+                    
+                    setTimeout(() => {
+                        typeText(aiMsg, `<strong>AI:</strong> ${data.answer}`, 20);
+                    }, 500);
+                    
+                    // Add sources if available
+                    if (data.sources && data.sources.length > 0) {
+                        setTimeout(() => {
+                            const sourcesHeader = document.createElement('h3');
+                            sourcesHeader.innerHTML = "📚 Neural Database Sources:";
+                            responseBox.appendChild(sourcesHeader);
+                            glitchText(sourcesHeader);
+                            
+                            data.sources.forEach((doc, i) => {
+                                setTimeout(() => {
+                                    const sourceP = document.createElement('p');
+                                    responseBox.appendChild(sourceP);
+                                    typeText(sourceP, `<em>Data Block ${doc.page}:</em> ${doc.content}`, 15);
+                                }, i * 200);
+                            });
+                        }, 2000);
+                    }
+                } else {
+                    // Error handling with cyberpunk style
+                    const errorMsg = document.createElement('p');
+                    errorMsg.style.color = 'var(--neon-pink)';
+                    errorMsg.innerHTML = `<strong>System Error:</strong> ${data.error}`;
+                    responseBox.appendChild(errorMsg);
+                    glitchText(errorMsg);
+                }
+                
+                // Auto-scroll to bottom
+                responseBox.scrollTop = responseBox.scrollHeight;
+                
+            } catch (error) {
+                // Reset button state on error
+                btnText.style.display = 'inline';
+                btnLoading.classList.add('btn-loading-hidden');
+                sendBtn.disabled = false;
+                promptInput.disabled = false;
+                
+                const errorMsg = document.createElement('p');
+                errorMsg.style.color = 'var(--neon-pink)';
+                errorMsg.innerHTML = `<strong>Connection Error:</strong> Failed to reach neural network`;
+                responseBox.appendChild(errorMsg);
+                glitchText(errorMsg);
+            }
+        };
+
+        // Add enter key support
+        promptInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                form.dispatchEvent(new Event('submit'));
+            }
+        });
+
+        // Focus on input when page loads
+        window.addEventListener('load', () => {
+            promptInput.focus();
+        });
+
+        // Add random cyberpunk messages
+        const cyberpunkMessages = [
+            "Neural pathways optimized...",
+            "Quantum processors online...",
+            "Accessing distributed knowledge matrix...",
+            "Synaptic connections established...",
+            "AI consciousness synchronized..."
+        ];
+
+        setInterval(() => {
+            if (Math.random() < 0.1) { // 10% chance every 5 seconds
+                const statusMsg = document.createElement('p');
+                statusMsg.style.opacity = '0.6';
+                statusMsg.style.fontSize = '0.9em';
+                statusMsg.style.fontStyle = 'italic';
+                statusMsg.innerHTML = `<strong>System:</strong> ${cyberpunkMessages[Math.floor(Math.random() * cyberpunkMessages.length)]}`;
+                responseBox.appendChild(statusMsg);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    if (statusMsg.parentNode) {
+                        statusMsg.remove();
+                    }
+                }, 3000);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
