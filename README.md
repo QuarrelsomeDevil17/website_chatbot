@@ -7,6 +7,9 @@ A futuristic cyberpunk-themed Retrieval-Augmented Generation (RAG) chatbot power
 ![Flask](https://img.shields.io/badge/Flask-3.0.3-00ffff?style=for-the-badge&logo=flask)
 ![LangChain](https://img.shields.io/badge/LangChain-0.2.3-8000ff?style=for-the-badge)
 
+## Screenshots
+<img width="1372" height="925" alt="Image" src="https://github.com/user-attachments/assets/4dbccd08-6d35-474e-9783-0c97e00311ef" />
+
 ## ✨ Features
 
 ### AI-Powered Features
