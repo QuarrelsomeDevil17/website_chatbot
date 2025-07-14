@@ -30,7 +30,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated background grid */
+/* Animated background grids */
 body::before {
     content: '';
     position: fixed;

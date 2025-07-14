@@ -1,7 +1,7 @@
 # Flask web framework
 flask==3.0.3
 
-# LangChain core and modules
+# LangChain modules
 langchain==0.2.3
 langchain-core==0.2.3
 langchain-community==0.2.3

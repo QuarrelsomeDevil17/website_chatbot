@@ -28,7 +28,6 @@ def load_documents(folder_path: str) -> List[Document]:
             print(f"Failed to load {file_path}: {e}")
 
     return documents
-
 def split_documents(documents: List[Document], chunk_size=1000, chunk_overlap=200) -> List[Document]:
     """Split documents into smaller chunks."""
     text_splitter = RecursiveCharacterTextSplitter(

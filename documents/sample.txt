@@ -5,6 +5,6 @@ Machine learning is a subset of artificial intelligence (AI) that provides syste
 
 Deep learning is a subset of machine learning in which neural networks are able to learn unsupervised from data that is unstructured or unlabeled.
 
-Natural language processing (NLP) is a branch of artificial intelligence that helps computers understand, interpret and manipulate human language.
+Natural language processing (NLP) is a branch of artificial intelligence that helps computers understand,interpret and manipulate human language.
 
 Large language models (LLMs) are a type of neural network architecture that can perform various natural language processing tasks.

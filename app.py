@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 from dotenv import load_dotenv
 from rag_chain import setup_rag_chain
-
 import os
 
 app = Flask(__name__)

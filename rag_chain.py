@@ -26,12 +26,11 @@ def setup_rag_chain():
         streaming=True
     )
     
-    # Create RAG chain
+    # Create RAG-chain
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
         retriever=retriever,
         return_source_documents=True
-    )
-    
+    )    
     return qa_chain

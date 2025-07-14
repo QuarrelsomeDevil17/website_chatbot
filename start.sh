@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# DeepSeek R1 Neural Interface - Development Script
+# DeepSeek R1 Neural Interface Development Script
 # Cyberpunk RAG Chatbot Launcher
 
 echo "🤖 Starting DeepSeek R1 Neural Interface..."
