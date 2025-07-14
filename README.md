@@ -9,25 +9,14 @@ A futuristic cyberpunk-themed Retrieval-Augmented Generation (RAG) chatbot power
 
 ## ✨ Features
 
-### 🎨 Cyberpunk UI/UX
-- **Neon Color Scheme**: Cyan, Pink, Purple, Green glowing effects
-- **Futuristic Typography**: Orbitron and Rajdhani fonts
-- **Dynamic Animations**: 
-  - Moving grid background
-  - Floating particle effects
-  - Neon flickering text
-  - Glitch effects on errors
-  - Typing animations
-  - Rotating rainbow borders
-
-### 🧠 AI-Powered Features
+### AI-Powered Features
 - **RAG Architecture**: Retrieval-Augmented Generation for accurate responses
 - **Document Processing**: Supports PDF and TXT files
 - **Vector Search**: FAISS-powered semantic search
 - **Source Citations**: Shows relevant document sources
 - **Real-time Chat**: Interactive conversation interface
 
-### 🚀 Technical Stack
+### Technical Stack
 - **Backend**: Flask (Python)
 - **AI Model**: DeepSeek R1 via OpenRouter API
 - **Embeddings**: HuggingFace Sentence Transformers
@@ -35,7 +24,7 @@ A futuristic cyberpunk-themed Retrieval-Augmented Generation (RAG) chatbot power
 - **Frontend**: Vanilla JavaScript with CSS3 animations
 - **Document Processing**: LangChain + PyPDF
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 - Python 3.12+
@@ -79,7 +68,7 @@ A futuristic cyberpunk-themed Retrieval-Augmented Generation (RAG) chatbot power
 7. **Access the interface**
    Open your browser and navigate to `http://127.0.0.1:5000`
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 rag_chat/
@@ -99,7 +88,7 @@ rag_chat/
     └── index.html       # Main interface template
 ```
 
-## 🎮 Usage
+## Usage
 
 1. **Start the application** using `python app.py`
 2. **Open your browser** to `http://127.0.0.1:5000`
@@ -108,27 +97,6 @@ rag_chat/
 5. **Watch the cyberpunk magic** as the AI responds with typing effects
 6. **View sources** from your document database
 
-### Example Queries
-- "What is machine learning?"
-- "Explain the main concepts in the documents"
-- "Summarize the key points about AI"
-
-## 🎨 Cyberpunk Features
-
-### Visual Effects
-- **Neon Glow**: Text shadows and border glows
-- **Grid Animation**: Moving background grid pattern
-- **Particle System**: Floating colored particles
-- **Glitch Effects**: Matrix-style text corruption
-- **Typing Animation**: Character-by-character text reveal
-- **Hover Effects**: Button transformations and light sweeps
-
-### Interactive Elements
-- **Loading States**: Spinning neon loader
-- **Error Handling**: Glitch effects for errors
-- **Auto-scroll**: Smooth scrolling to new messages
-- **Responsive Design**: Mobile-friendly layout
-- **System Messages**: Random status updates
 
 ## 🔧 Configuration
 
@@ -148,7 +116,7 @@ You can use different models by changing the `DEEPSEEK_MODEL_ID`:
 - **Chunk Size**: Change in `document_processor.py`
 - **Retrieval Count**: Modify `search_kwargs` in `rag_chain.py`
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -172,19 +140,8 @@ You can use different models by changing the `DEEPSEEK_MODEL_ID`:
    - Delete `faiss_store/` folder and restart
    - This will regenerate the vector store
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **DeepSeek**: For the amazing AI model
 - **OpenRouter**: For API access
@@ -206,19 +163,4 @@ Key dependencies and their purposes:
 | PyPDF | 4.2.0 | PDF processing |
 | OpenAI | 1.95.1 | API client |
 
-## 🚀 Future Enhancements
 
-- [ ] Voice input/output
-- [ ] Multi-language support
-- [ ] Advanced document types (DOCX, HTML)
-- [ ] Chat history persistence
-- [ ] User authentication
-- [ ] API endpoints for integration
-- [ ] Docker containerization
-- [ ] Advanced cyberpunk effects
-
----
-
-**Built with 💜 by QuarrelsomeDevil17**
-
-*"The future is here, and it's neon-lit."*
